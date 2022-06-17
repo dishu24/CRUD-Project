@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-sm-4">
+        <h4 class="text-center alert alert-primary mt-4">Update/Edit Student Information</h4>
+        {% for st in user  %}
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            <div class="form-floating mb-3 ">
+                <input type="text" class="form-control" name="name" value="{{st.name}}" id="floatingInput" placeholder="Enter Your Name" Required>
+                <label for="floatingInput">Name</label>
+              </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" name="email" value="{{st.email}}" id="floatingInput" placeholder="Enter Your Email " Required>
+                <label for="floatingInput">Email</label>
+              </div>
+              <div class="form-floating">
+                <input type="password" class="form-control" name="password" value="{{st.password}}" id="floatingPassword" placeholder="Enter Your Password" Required>
+                <label for="floatingPassword">Password</label>
+              </div>
+              
+              <br>
+              <button class="btn btn-success" type="submit">Update</button>
+              <a class="btn btn-primary " href="{% url 'add_data' %}">Back TO Home</a>
+
+              
+        </form>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock content %}
